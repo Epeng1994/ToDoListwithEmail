@@ -1,8 +1,11 @@
 import './App.css';
 import { useState } from 'react';
 
+
+
+
 function App() {
-  const [tasks,setTasks] = useState([])
+  const [tasks,setTasks] = useState(['Do Homework','Laundry'])
   const [newTask,setNewTask] = useState('')
 
   /*
@@ -12,17 +15,23 @@ function App() {
 
   */
   const onNewTaskSubmit = e =>{
-    const newTask = e.target
+    e.preventDefault()
     setTasks([...tasks,newTask])
+  }
+
+  const newTaskEntry = e =>{
+    setNewTask(e.target.value)
   }
 
 
   return (
     <div>
-      <form onSubmit = {onNewTaskSubmit}>
-        <input >Enter new task</input>
+      <form onSubmit={onNewTaskSubmit}>
+        <label for = 'taskEntry'>Enter new task</label>
+        <input value = {newTask} name = 'taskEntry' type='text' onChange = {newTaskEntry} onFocus = {()=>setNewTask('')}/>
+        <button>Submit</button>
       </form>
-
+      
       {
         tasks.map(a=>{
           return(
