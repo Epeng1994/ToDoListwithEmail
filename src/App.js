@@ -12,14 +12,15 @@ function App() {
 
   */
   const onNewTaskSubmit = e =>{
-    
+    const newTask = e.target
+    setTasks([...tasks,newTask])
   }
 
 
   return (
     <div>
-      <form>
-        <input>Enter new task</input>
+      <form onSubmit = {onNewTaskSubmit}>
+        <input >Enter new task</input>
       </form>
 
       {
