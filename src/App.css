@@ -4,3 +4,9 @@
     justify-content: center;
     align-items: center;
 }
+
+.taskList{
+    display:flex;
+    flex-flow:column;
+    justify-content: left;
+}
