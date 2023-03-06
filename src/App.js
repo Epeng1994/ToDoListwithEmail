@@ -24,21 +24,28 @@ function App() {
   }
 
 
+  const clearTasks = e =>{
+    setTasks([])
+  }
+
   return (
-    <div>
+    <div className = 'App'>
       <form onSubmit={onNewTaskSubmit}>
         <label for = 'taskEntry'>Enter new task</label>
         <input value = {newTask} name = 'taskEntry' type='text' onChange = {newTaskEntry} onFocus = {()=>setNewTask('')}/>
         <button>Submit</button>
       </form>
+      <div className='taskList'>
+        {
+          tasks.map(a=>{
+            return(
+              <div><input type='checkbox'/>{a}</div>
+            )
+          })
+        }
+      </div>
+      <button onClick = {clearTasks}>Clear Tasks</button>
       
-      {
-        tasks.map(a=>{
-          return(
-            <div>{a}</div>
-          )
-        })
-      }
 
     </div>
   );
